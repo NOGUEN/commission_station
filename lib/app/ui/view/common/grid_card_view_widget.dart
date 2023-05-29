@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class GridViewWidget extends StatelessWidget {
-  const GridViewWidget({super.key});
+class GridCardViewWidget extends StatelessWidget {
+  const GridCardViewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       itemCount: 4,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        childAspectRatio: 1 / 2,
+        crossAxisCount: 2,
+        childAspectRatio: 1 / 1,
       ),
       itemBuilder: (BuildContext context, int index) {
         return CardCollectionWidgetCell(title: 'hello');

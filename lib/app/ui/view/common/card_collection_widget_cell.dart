@@ -8,12 +8,12 @@ class CardCollectionWidgetCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: GestureDetector(
-        onTap: () {
-          print('hello');
-        },
+    return GestureDetector(
+      onTap: () {
+        print("hello");
+      },
+      child: Card(
+        clipBehavior: Clip.antiAlias,
         child: Column(
           children: <Widget>[
             AspectRatio(
