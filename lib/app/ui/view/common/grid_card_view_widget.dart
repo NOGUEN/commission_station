@@ -9,13 +9,16 @@ class GridCardViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: 4,
+      itemCount: 20,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 1 / 1,
       ),
       itemBuilder: (BuildContext context, int index) {
-        return CardCollectionWidgetCell(title: 'hello');
+        return CardCollectionWidgetCell(
+          title: 'hello',
+          destinationUrl: 'https://velog.io/@lee7198/Flutter-WebVIew-도입기-1',
+        );
       },
     );
   }

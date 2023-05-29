@@ -8,7 +8,7 @@ class TestPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('test things'),
+        title: Text('Commission Station'),
       ),
       body: GridCardViewWidget(),
     );

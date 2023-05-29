@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+
+import '../../../routes/app_pages.dart';
 
 class CardCollectionWidgetCell extends StatelessWidget {
   final String title;
-  const CardCollectionWidgetCell({required this.title, super.key});
+  final String destinationUrl;
+  const CardCollectionWidgetCell({
+    required this.title,
+    required this.destinationUrl,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("hello");
+        Get.toNamed(Routes.WEBVIEW, arguments: destinationUrl);
       },
       child: Card(
         clipBehavior: Clip.antiAlias,
