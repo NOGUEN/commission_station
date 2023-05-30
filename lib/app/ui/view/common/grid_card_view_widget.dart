@@ -24,6 +24,8 @@ class GridCardViewWidget extends StatelessWidget {
           title: 'title', subTitle: 'subTitle', url: 'https://noguen.com'),
       CommissionInfo(
           title: 'title', subTitle: 'subTitle', url: 'https://noguen.com'),
+      CommissionInfo(
+          title: 'title', subTitle: 'subTitle', url: 'https://noguen.com'),
     ]);
 
     return GridView.builder(
