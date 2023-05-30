@@ -13,9 +13,24 @@ class TestPage extends GetView<MainController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Commission Station'),
+        title: const Padding(
+          padding: EdgeInsets.fromLTRB(4, 16, 0, 0),
+          child: Text(
+            'Commission Station',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        centerTitle: false,
+        backgroundColor: Colors.white,
+        elevation: 0.0,
       ),
-      body: GridCardViewWidget(),
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: GridCardViewWidget(),
+      ),
       bottomNavigationBar:
           BottomNavBar(onNewMenuSelected: controller.onMenuSelected),
     );

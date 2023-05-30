@@ -7,9 +7,11 @@ import '../../../routes/app_pages.dart';
 
 class CardCollectionWidgetCell extends StatelessWidget {
   final String title;
+  final String subTitle;
   final String destinationUrl;
   const CardCollectionWidgetCell({
     required this.title,
+    required this.subTitle,
     required this.destinationUrl,
     super.key,
   });
@@ -20,19 +22,21 @@ class CardCollectionWidgetCell extends StatelessWidget {
       onTap: () {
         Get.toNamed(Routes.WEBVIEW, arguments: destinationUrl);
       },
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        child: Column(
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 18 / 11,
-              child: Container(
-                color: Colors.blue,
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            children: <Widget>[
+              AspectRatio(
+                aspectRatio: 18 / 11,
+                child: Image(
+                  image: AssetImage('images/default_thumbnail.png'),
+                ),
               ),
-            ),
-            Expanded(
-              child: Column(children: <Widget>[
-                SizedBox(
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                child: SizedBox(
                   width: double.infinity,
                   child: Text(
                     title,
@@ -42,13 +46,16 @@ class CardCollectionWidgetCell extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
+                child: SizedBox(
                   width: double.infinity,
-                  child: Text(title),
+                  child: Text(subTitle),
                 ),
-              ]),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

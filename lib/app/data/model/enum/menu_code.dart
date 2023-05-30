@@ -1,1 +1,1 @@
-enum MenuCode { MATHING, CHAT, SETTING }
+enum MenuCode { MAIN, SETTING }

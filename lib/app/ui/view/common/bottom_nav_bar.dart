@@ -59,18 +59,13 @@ class BottomNavBar extends StatelessWidget {
   List<BottomNavItem> _getNavItems() {
     return [
       const BottomNavItem(
-        navTitle: 'test',
-        iconSvgName: 'test',
-        menuCode: MenuCode.MATHING,
+        navTitle: '홈',
+        iconSvgName: 'home',
+        menuCode: MenuCode.MAIN,
       ),
       const BottomNavItem(
-        navTitle: 'test',
-        iconSvgName: 'test',
-        menuCode: MenuCode.CHAT,
-      ),
-      const BottomNavItem(
-        navTitle: 'test',
-        iconSvgName: 'test',
+        navTitle: '설정',
+        iconSvgName: 'setting',
         menuCode: MenuCode.SETTING,
       ),
     ];
