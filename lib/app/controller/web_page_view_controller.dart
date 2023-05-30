@@ -10,7 +10,7 @@ class WebPageViewController extends GetxController {
     ..setNavigationDelegate(
       NavigationDelegate(
         onProgress: (int progress) {
-          // Update loading bar.
+          debugPrint('WebView is loading (progress : $progress%)');
         },
         onPageStarted: (String url) {},
         onPageFinished: (String url) {},
@@ -23,5 +23,5 @@ class WebPageViewController extends GetxController {
         },
       ),
     )
-    ..loadRequest(Uri.parse('https://flutter.dev'));
+    ..loadRequest(Uri.parse(Get.arguments));
 }

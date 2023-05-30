@@ -1,0 +1,1 @@
+enum MenuCode { MAIN, SETTING }
