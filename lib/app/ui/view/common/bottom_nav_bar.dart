@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/bottom_nav_contoller.dart';
 import '../../../data/model/enum/menu_code.dart';
 import '../../../data/model/menu/menu_item.dart';
 
-// ignore: must_be_immutable
 class BottomNavBar extends StatelessWidget {
   final Function(MenuCode menuCode) onNewMenuSelected;
 
@@ -28,10 +26,9 @@ class BottomNavBar extends StatelessWidget {
         items: navItems
             .map(
               (BottomNavItem navItem) => BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    navItem.iconSvgName,
-                    height: 28,
-                    width: 28,
+                  icon: Icon(
+                    IconData(int.parse(navItem.iconSvgName),
+                        fontFamily: 'MaterialIcons'),
                     color:
                         navItems.indexOf(navItem) == navController.selectedIndex
                             ? selectedItemColor
@@ -60,12 +57,12 @@ class BottomNavBar extends StatelessWidget {
     return [
       const BottomNavItem(
         navTitle: '홈',
-        iconSvgName: 'home',
+        iconSvgName: '0xe318',
         menuCode: MenuCode.MAIN,
       ),
       const BottomNavItem(
         navTitle: '설정',
-        iconSvgName: 'setting',
+        iconSvgName: '0xe57f',
         menuCode: MenuCode.SETTING,
       ),
     ];

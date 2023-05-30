@@ -1,8 +1,8 @@
-import 'package:commission_station/app/controller/bottom_nav_contoller.dart';
 import 'package:commission_station/app/controller/main_controller.dart';
 import 'package:commission_station/app/data/model/enum/menu_code.dart';
+import 'package:commission_station/app/ui/view/setting_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 import 'app/ui/view/common/bottom_nav_bar.dart';
 import 'app/ui/view/common/grid_card_view_widget.dart';
 
@@ -27,12 +27,31 @@ class TestPage extends GetView<MainController> {
         backgroundColor: Colors.white,
         elevation: 0.0,
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: GridCardViewWidget(),
-      ),
+      body: Obx(() => getPageOnSelectedMenu(controller.selectedMenuCode)),
       bottomNavigationBar:
           BottomNavBar(onNewMenuSelected: controller.onMenuSelected),
     );
+  }
+}
+
+const GridCardViewWidget cardView = GridCardViewWidget();
+SettingPage? settingPage;
+
+Widget getPageOnSelectedMenu(MenuCode menuCode) {
+  switch (menuCode) {
+    case MenuCode.MAIN:
+      // return homeView;
+      return const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: cardView,
+      );
+    case MenuCode.SETTING:
+      settingPage ??= const SettingPage();
+      return settingPage!;
+    default:
+      return const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: cardView,
+      );
   }
 }
