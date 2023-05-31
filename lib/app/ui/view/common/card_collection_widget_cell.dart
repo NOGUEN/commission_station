@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 
 import '../../../routes/app_pages.dart';
@@ -28,7 +26,7 @@ class CardCollectionWidgetCell extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           child: Column(
             children: <Widget>[
-              AspectRatio(
+              const AspectRatio(
                 aspectRatio: 18 / 11,
                 child: Image(
                   image: AssetImage('images/default_thumbnail.png'),
@@ -41,7 +39,7 @@ class CardCollectionWidgetCell extends StatelessWidget {
                   child: Text(
                     title,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -51,7 +49,12 @@ class CardCollectionWidgetCell extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
                 child: SizedBox(
                   width: double.infinity,
-                  child: Text(subTitle),
+                  child: Text(
+                    subTitle,
+                    style: const TextStyle(
+                      fontSize: 10,
+                    ),
+                  ),
                 ),
               ),
             ],
