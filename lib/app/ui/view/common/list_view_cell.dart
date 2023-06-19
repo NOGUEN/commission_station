@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class ListViewCell extends StatelessWidget {
   final String listTitle;
@@ -13,22 +11,38 @@ class ListViewCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const <Widget>[
-        Padding(
-          padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
-          child: Icon(Icons.settings),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white,
+          boxShadow: const [
+            BoxShadow(
+              blurRadius: 0.1,
+              spreadRadius: 0.1,
+            )
+          ],
         ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
-          child: Text(
-            "설정들",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+              child: listIcon,
             ),
-          ),
-        )
-      ],
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+              child: Text(
+                listTitle,
+                style: const TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

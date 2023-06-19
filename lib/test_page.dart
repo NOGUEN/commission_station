@@ -1,10 +1,10 @@
 import 'package:commission_station/app/controller/main_controller.dart';
 import 'package:commission_station/app/data/model/enum/menu_code.dart';
+import 'package:commission_station/app/ui/view/main_commission_page.dart';
 import 'package:commission_station/app/ui/view/setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app/ui/view/common/bottom_nav_bar.dart';
-import 'app/ui/view/common/grid_card_view_widget.dart';
 
 class TestPage extends GetView<MainController> {
   const TestPage({super.key});
@@ -34,7 +34,7 @@ class TestPage extends GetView<MainController> {
   }
 }
 
-const GridCardViewWidget cardView = GridCardViewWidget();
+const MainCommissionPage mainPage = MainCommissionPage();
 SettingPage? settingPage;
 
 Widget getPageOnSelectedMenu(MenuCode menuCode) {
@@ -43,7 +43,7 @@ Widget getPageOnSelectedMenu(MenuCode menuCode) {
       // return homeView;
       return const Padding(
         padding: EdgeInsets.all(8.0),
-        child: cardView,
+        child: mainPage,
       );
     case MenuCode.SETTING:
       settingPage ??= const SettingPage();
@@ -51,7 +51,7 @@ Widget getPageOnSelectedMenu(MenuCode menuCode) {
     default:
       return const Padding(
         padding: EdgeInsets.all(8.0),
-        child: cardView,
+        child: mainPage,
       );
   }
 }
