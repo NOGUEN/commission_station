@@ -1,3 +1,4 @@
+import 'package:commission_station/app/data/model/websites/keyword_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,10 @@ class CardCollectionWidgetCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        String tmp =
+            "테스트 텍스트 입니다. 커미션 어쩌구 입니다. 테스트 텍스트 입니다. 커미션 어쩌구 입니다. 커미션이라는 단어가 현재까지 총 3번 나왔습니다.";
         Get.toNamed(Routes.WEBVIEW, arguments: destinationUrl);
+        print("\n\n ${countKeywords(tmp, ["커미션"])}");
       },
       child: Padding(
         padding: const EdgeInsets.all(4.0),
