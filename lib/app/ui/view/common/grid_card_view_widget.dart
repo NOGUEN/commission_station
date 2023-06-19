@@ -2,6 +2,8 @@ import 'package:commission_station/app/controller/card_view_controller.dart';
 import 'package:commission_station/app/ui/view/common/card_collection_widget_cell.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/model/commission_info.dart';
+
 class GridCardViewWidget extends StatelessWidget {
   const GridCardViewWidget({super.key});
 
