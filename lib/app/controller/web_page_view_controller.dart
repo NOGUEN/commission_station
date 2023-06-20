@@ -13,6 +13,7 @@ class WebPageViewController extends GetxController {
           onPageStarted: (String url) {},
           onPageFinished: (_) async {
             readJS();
+            loadHtmlContent();
           },
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
@@ -27,7 +28,25 @@ class WebPageViewController extends GetxController {
   }
   void readJS() async {
     String html = await controller.runJavaScriptReturningResult(
-        "window.document.getElementsByTagName('html')[0].outerHTML;") as String;
+        "new XMLSerializer().serializeToString(document);") as String;
+    print(html);
+  }
+
+  void loadHtmlContent() async {
+    String javascriptCode = '''
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://twitter.com/', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var htmlContent = xhr.responseText;
+          window.flutter_inappwebview.callHandler('htmlContentCallback', htmlContent);
+        }
+      };
+      xhr.send();
+    ''';
+
+    String html =
+        await controller.runJavaScriptReturningResult(javascriptCode) as String;
     print(html);
   }
 }
