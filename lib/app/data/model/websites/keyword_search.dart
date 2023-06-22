@@ -1,27 +1,3 @@
-int keywordCount({required String src, required String keyword}) {
-  int s = 0;
-  int count = 0;
-  List<int> shift = List<int>.filled(keyword.length + 1, 0);
-  List<int> bpos = List<int>.filled(keyword.length + 1, 0);
-
-  while (s <= src.length - keyword.length) {
-    int j = keyword.length - 1;
-
-    while (j >= 0 && keyword[j] == src[s + j]) {
-      j--;
-    }
-
-    if (j < 0) {
-      print("pattern occurs at shift = $s\n");
-      count += 1;
-      s += shift[0];
-    } else {
-      s += shift[j + 1];
-    }
-  }
-  return count;
-}
-
 Map<String, int> countKeywords(String text, List<String> keywords) {
   Map<String, int> keywordCount = {};
   for (String keyword in keywords) {

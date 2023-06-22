@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../data/model/websites/keyword_search.dart';
 
 class WebPageViewController extends GetxController {
   late WebViewController controller;
@@ -11,9 +12,10 @@ class WebPageViewController extends GetxController {
         NavigationDelegate(
           onProgress: (int progress) {},
           onPageStarted: (String url) {},
-          onPageFinished: (_) async {
-            readJS();
-            loadHtmlContent();
+          onPageFinished: (_) {
+            Future.delayed(Duration(milliseconds: 5000), () {
+              loadHtmlContent();
+            });
           },
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
@@ -26,27 +28,11 @@ class WebPageViewController extends GetxController {
       )
       ..loadRequest(Uri.parse(Get.arguments));
   }
-  void readJS() async {
-    String html = await controller.runJavaScriptReturningResult(
-        "new XMLSerializer().serializeToString(document);") as String;
-    print(html);
-  }
 
   void loadHtmlContent() async {
-    String javascriptCode = '''
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://twitter.com/', true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          var htmlContent = xhr.responseText;
-          window.flutter_inappwebview.callHandler('htmlContentCallback', htmlContent);
-        }
-      };
-      xhr.send();
-    ''';
-
-    String html =
-        await controller.runJavaScriptReturningResult(javascriptCode) as String;
-    print(html);
+    String script = "document.documentElement.innerHTML";
+    final result = await controller.runJavaScriptReturningResult(script);
+    String html = result.toString();
+    print(countKeywords(html, ['웨어하우스']));
   }
 }

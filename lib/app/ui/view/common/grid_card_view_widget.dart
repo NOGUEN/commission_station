@@ -15,9 +15,9 @@ class GridCardViewWidget extends StatelessWidget {
           subTitle: '커미션 해요, 가끔 , 개인작 해요',
           url: 'https://twitter.com/gydud612/status/1663457504536432640'),
       CommissionInfo(
-          title: '🎱RT추첨🎱',
-          subTitle: 'RT 해주신 분 중 추첨을 통해 아래의 타입을 작업해드립니다!',
-          url: 'https://twitter.com/Guiro_ooo/status/1663575353556885504'),
+          title: '네이버 글',
+          subTitle: '네이버',
+          url: 'https://noguen.com/database/data-warehousing'),
       CommissionInfo(
           title: 'RT🫧 목표금액',
           subTitle: '새로운 타입을 추가하여 돌아왔습니다!',
