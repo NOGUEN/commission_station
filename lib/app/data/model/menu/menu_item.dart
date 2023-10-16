@@ -2,12 +2,12 @@ import '../enum/menu_code.dart';
 
 class BottomNavItem {
   final String navTitle;
-  final String iconSvgName;
+  final String iconSVGName;
   final MenuCode menuCode;
 
   const BottomNavItem({
     required this.navTitle,
-    required this.iconSvgName,
+    required this.iconSVGName,
     required this.menuCode,
   });
 }

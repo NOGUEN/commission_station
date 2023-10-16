@@ -1,23 +1,24 @@
-import 'package:commission_station/app/bindings/web_view_binding.dart';
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
-import '../../test_page.dart';
-import '../bindings/test_page_binding.dart';
-import '../ui/view/web_view_page.dart';
+import 'package:commission_station/app/view/main_page/main_page.dart';
+import '../bindings/main_binding.dart';
+
 part './app_routes.dart';
 
+// 앱 내 페이지를 정의하는 공간, 페이지 만든 후 여기에 정의해주세요
 class AppPages {
-  static const INITIAL = Routes.INITIAL;
+  AppPages._();
+
+  static const INITIAL = Routes.LOGIN;
+  static const TEST_PAGE = Routes.TEST_PAGE;
 
   static final pages = [
     GetPage(
-      name: Routes.INITIAL,
-      page: () => const TestPage(),
-      binding: TestPageBinding(),
-    ),
-    GetPage(
-      name: Routes.WEBVIEW,
-      page: () => const WebViewPage(),
-      binding: WebViewBinding(),
+      name: _Paths.MAIN,
+      page: () => MainPage(),
+      binding: MainBinding(),
+      transition: Transition.fadeIn,
     ),
   ];
 }
