@@ -8,11 +8,18 @@ import '../../controller/main/main_controller.dart';
 import '../../data/model/enum/menu_code.dart';
 
 class MainPage extends BaseView<MainController> {
+  TextEditingController textEditingController = TextEditingController();
+
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    return const CommissionStationSearchAppBar(
-      appBarText: AppString.str_commission_station,
-    );
+    switch (controller.selectedMenuCode) {
+      case MenuCode.HOME:
+        return const CommissionStationAppBar(
+            appBarText: AppString.str_commission_station);
+      case MenuCode.SEARCH:
+        return CommissionStationSearchAppBar(
+            appBarText: "소셜", controller: controller);
+    }
   }
 
   @override

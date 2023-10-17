@@ -1,6 +1,9 @@
+import 'package:commission_station/app/view/common/commission_station_text_field.dart';
 import 'package:commission_station/app/view/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../theme/app_string.dart';
 
 class CommissionStationAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -32,24 +35,38 @@ class CommissionStationSearchAppBar extends StatelessWidget
     implements PreferredSizeWidget {
   const CommissionStationSearchAppBar({
     required this.appBarText,
+    required this.controller,
     super.key,
   });
 
   final String appBarText;
+  final controller;
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-        ),
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+      ),
+      child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CommissionStationTextBold2Xl(
-              text: appBarText,
-              textColor: Colors.black,
+            Padding(
+              padding: EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 0),
+              child: CommissionStationTextBold2Xl(
+                text: appBarText,
+                textColor: Colors.black,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: CommissionStationTextField(
+                controller: controller,
+                titleText: '',
+                hintText: '검색',
+                iconPath: AppString.search,
+              ),
             ),
           ],
         ),
@@ -58,5 +75,5 @@ class CommissionStationSearchAppBar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(136.h);
+  Size get preferredSize => Size.fromHeight(110.h);
 }

@@ -1,5 +1,8 @@
 import 'package:commission_station/app/view/theme/app_fontweight.dart';
+import 'package:commission_station/app/view/theme/app_values.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CommissionStationTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -48,6 +51,15 @@ class CommissionStationTextField extends StatelessWidget {
                 width: 2,
               ),
             ),
+            prefixIcon: iconPath != null
+                ? Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.h),
+                    child: SvgPicture.asset(
+                      iconPath!,
+                      width: 12.w,
+                    ),
+                  )
+                : null,
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
                 color: Colors.black,
@@ -73,6 +85,7 @@ class CommissionStationTextField extends StatelessWidget {
           autofocus: false,
           onSubmitted: keyboardSubmit,
           onChanged: onChanged,
+          textAlignVertical: iconPath != null ? TextAlignVertical.center : null,
         ),
       ],
     );
