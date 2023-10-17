@@ -1,6 +1,7 @@
+import 'package:commission_station/app/view/common/commission_station_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:commission_station/app/core/base/base_view.dart';
+import 'package:get/get.dart';
 import '../../controller/main/main_controller.dart';
 import '../../data/model/enum/menu_code.dart';
 
@@ -8,7 +9,7 @@ class MainPage extends BaseView<MainController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     //return const CommissionStationAppBar();
-    return AppBar();
+    return null;
   }
 
   @override
@@ -21,18 +22,19 @@ class MainPage extends BaseView<MainController> {
 
   @override
   Widget? bottomNavigationBar() {
-    //return CommissionStationBottomNavigationBar(
-    //    onNewMenuSelected: controller.onMenuSelected);
-    return null;
+    return CommissionStationBottomNavigationBar(
+        onNewMenuSelected: controller.onMenuSelected);
   }
 
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
     switch (menuCode) {
       case MenuCode.HOME:
         return Container();
-      case MenuCode.GOAL:
+      case MenuCode.SEARCH:
         return Container();
-      case MenuCode.MYPAGE:
+      case MenuCode.SOCIAL:
+        return Container();
+      case MenuCode.MORE:
         return Container();
       default:
         return Container();

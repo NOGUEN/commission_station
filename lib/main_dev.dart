@@ -7,7 +7,7 @@ import 'app/main.dart';
 
 void main() async {
   EnvConfig devConfig = EnvConfig(
-    appName: "1D1S",
+    appName: "commission_station",
     baseUrl: "",
     shouldCollectCrashLog: true,
   );
