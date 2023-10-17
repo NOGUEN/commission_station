@@ -12,6 +12,7 @@ abstract class Routes {
   static const MAIN = _Paths.MAIN;
   static const SETTING = _Paths.SETTING;
   static const UPDATE_PROFILE = _Paths.UPDATE_PROFILE;
+  static const WEBVIEW = _Paths.WEBVIEW;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const MAIN = "/main";
   static const SETTING = "/setting";
   static const UPDATE_PROFILE = "/update_profile";
+  static const WEBVIEW = "/webview";
 }

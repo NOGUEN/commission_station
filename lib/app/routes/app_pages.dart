@@ -11,6 +11,7 @@ class AppPages {
   AppPages._();
 
   static const INITIAL = Routes.MAIN;
+  static const WEBVIEW = Routes.WEBVIEW;
   static const TEST_PAGE = Routes.TEST_PAGE;
 
   static final pages = [

@@ -2,7 +2,7 @@
 
 abstract class AppString {
   //앱 내부 텍스트 값
-  static const str_1D1S = "Commission Station";
+  static const str_commission_station = "Commission Station";
 
   // Get 라우팅 argument의 key로 사용
   static const roomName = "roomName";

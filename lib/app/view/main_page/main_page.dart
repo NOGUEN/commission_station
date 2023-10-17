@@ -1,4 +1,6 @@
+import 'package:commission_station/app/view/common/commission_station_app_bar.dart';
 import 'package:commission_station/app/view/common/commission_station_bottom_nav_bar.dart';
+import 'package:commission_station/app/view/theme/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:commission_station/app/core/base/base_view.dart';
 import 'package:get/get.dart';
@@ -8,8 +10,9 @@ import '../../data/model/enum/menu_code.dart';
 class MainPage extends BaseView<MainController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    //return const CommissionStationAppBar();
-    return null;
+    return const CommissionStationSearchAppBar(
+      appBarText: AppString.str_commission_station,
+    );
   }
 
   @override
