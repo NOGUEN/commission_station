@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
+
 import 'package:commission_station/app/view/common/commission_station_app_bar.dart';
 import 'package:commission_station/app/view/common/commission_station_bottom_nav_bar.dart';
 import 'package:commission_station/app/view/theme/app_string.dart';
@@ -17,6 +19,12 @@ class MainPage extends BaseView<MainController> {
         return const CommissionStationAppBar(
             appBarText: AppString.str_commission_station);
       case MenuCode.SEARCH:
+        return CommissionStationSearchAppBar(
+            appBarText: "소셜", controller: controller);
+      case MenuCode.MORE:
+        return CommissionStationSearchAppBar(
+            appBarText: "소셜", controller: controller);
+      case MenuCode.SOCIAL:
         return CommissionStationSearchAppBar(
             appBarText: "소셜", controller: controller);
     }
