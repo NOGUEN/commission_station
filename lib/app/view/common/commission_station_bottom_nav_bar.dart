@@ -39,13 +39,13 @@ class CommissionStationBottomNavigationBar extends StatelessWidget {
                       ? ColorFilter.mode(selectedItemColor, BlendMode.srcIn)
                       : ColorFilter.mode(unselectedItemColor, BlendMode.srcIn),
                 ),
-                label: "",
+                label: navItem.menuTitle,
                 tooltip: "",
               ),
             )
             .toList(),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         backgroundColor: AppColors.pageBackground,
         selectedItemColor: selectedItemColor,
@@ -63,18 +63,22 @@ class CommissionStationBottomNavigationBar extends StatelessWidget {
     return [
       const BottomNavItem(
         iconSVGName: AppString.home,
+        menuTitle: AppString.str_home,
         menuCode: MenuCode.HOME,
       ),
       const BottomNavItem(
         iconSVGName: AppString.search,
+        menuTitle: AppString.str_search,
         menuCode: MenuCode.SEARCH,
       ),
       const BottomNavItem(
         iconSVGName: AppString.social,
+        menuTitle: AppString.str_social,
         menuCode: MenuCode.SOCIAL,
       ),
       const BottomNavItem(
         iconSVGName: AppString.more,
+        menuTitle: AppString.str_more,
         menuCode: MenuCode.MORE,
       ),
     ];
