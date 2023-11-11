@@ -2,6 +2,7 @@
 
 import 'package:commission_station/app/view/common/commission_station_app_bar.dart';
 import 'package:commission_station/app/view/common/commission_station_bottom_nav_bar.dart';
+import 'package:commission_station/app/view/main_page/home_page.dart';
 import 'package:commission_station/app/view/theme/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:commission_station/app/core/base/base_view.dart';
@@ -47,7 +48,7 @@ class MainPage extends BaseView<MainController> {
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
     switch (menuCode) {
       case MenuCode.HOME:
-        return Container();
+        return HomePage();
       case MenuCode.SEARCH:
         return Container();
       case MenuCode.SOCIAL:
