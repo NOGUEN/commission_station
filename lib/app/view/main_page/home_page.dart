@@ -62,14 +62,16 @@ class HomePage extends BaseView<MainController> {
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              return CardCollectionWidgetCell(
-                title: 'Commission On X',
-                subTitle: 'subTitle',
-                destinationUrl:
-                    'https://twitter.com/_moonblanc/status/1727245573156384976',
+              return Obx(() =>
+                CardCollectionWidgetCell(
+                  title: controller.data[index].title,
+                  subTitle: controller.data[index].subTitle,
+                  imgUrl: controller.imgUrl[controller.data[index].id],
+                  destinationUrl: controller.data[index].destinationUrl,
+                ),
               );
             },
-            childCount: 10,
+            childCount: controller.data.length,
           ),
         ),
       ],
@@ -89,6 +91,7 @@ Widget gridView() {
         title: 'hello',
         subTitle: 'hello',
         destinationUrl: '',
+        imgUrl: '',
       );
     }),
   );

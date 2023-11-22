@@ -5,6 +5,9 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WebPageViewController extends BaseController {
   late WebViewController controller;
+
+  var url = Get.arguments;
+
   WebPageViewController() {
     controller = WebViewController()
       ..setBackgroundColor(const Color(0x00000000))
@@ -21,7 +24,7 @@ class WebPageViewController extends BaseController {
           },
         ),
       )
-      ..loadRequest(Uri.parse(
-          'https://twitter.com/_moonblanc/status/1727245573156384976'));
+      ..loadRequest(Uri.parse(url))
+      ..setJavaScriptMode(JavaScriptMode.unrestricted);
   }
 }

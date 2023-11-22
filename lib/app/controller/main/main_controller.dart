@@ -1,10 +1,15 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:commission_station/app/data/local/mockdata.dart';
 import 'package:commission_station/app/view/common/commission_station_banner.dart';
 import 'package:commission_station/app/view/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' as htmlParser;
+import 'package:html/dom.dart' as dom;
 
 import '../../data/model/enum/menu_code.dart';
 import '/app/core/base/base_controller.dart';
@@ -27,6 +32,49 @@ class MainController extends BaseController {
 
   var currentPage = 0.obs;
   var pageController = PageController();
+
+  //TODO : 시연용 컨트롤러
+  /*
+    이 부분 나중에 지워 주십쇼
+
+    추가된 패키지(필요없으면 지울 것)
+    - http: ^1.1.1
+    추가된 data
+    - mockdata.dart
+   */
+  final List<MockDataModel> data = List.from(mockData)..shuffle();
+  final RxMap<int, String?> imgUrl = <int, String?>{}.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    loadAllImageUrl();
+  }
+
+  void loadAllImageUrl() async {
+    for(var item in data) {
+      if(item.imgUrl != null) {
+        imgUrl[item.id] = item.imgUrl;
+        continue;
+      }
+
+      String url = item.destinationUrl;
+
+      var response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        var document = htmlParser.parse(response.body);
+        dom.Element? metaTag = document.querySelector('meta[property="og:image"]');
+        if (metaTag != null) {
+          imgUrl[item.id] = metaTag.attributes['content'];
+
+          log(metaTag.attributes['content'] ?? 'null');
+
+          update();
+        }
+      }
+    }
+  }
 }
 
 class BannerDelegate extends SliverPersistentHeaderDelegate {
@@ -137,4 +185,5 @@ class BannerController extends GetxController {
     pageController.dispose();
     super.onClose();
   }
+
 }

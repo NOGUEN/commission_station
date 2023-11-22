@@ -34,7 +34,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.WEBVIEW,
-      page: () => const WebViewPage(),
+      page: () => WebViewPage(),
       binding: WebViewBinding(),
     ),
   ];

@@ -1,3 +1,4 @@
+import 'package:commission_station/app/controller/main/main_controller.dart';
 import 'package:commission_station/app/routes/app_pages.dart';
 import 'package:commission_station/app/view/theme/app_colors.dart';
 import 'package:commission_station/app/view/web_view_page.dart';
@@ -8,12 +9,15 @@ import 'package:get/get.dart';
 class CardCollectionWidgetCell extends StatelessWidget {
   final String title;
   final String subTitle;
+  final String? imgUrl;
   final String destinationUrl;
+
   const CardCollectionWidgetCell({
     required this.title,
     required this.subTitle,
     required this.destinationUrl,
     super.key,
+    required this.imgUrl,
   });
 
   @override
@@ -41,11 +45,22 @@ class CardCollectionWidgetCell extends StatelessWidget {
                   ),
                   color: Colors.white,
                 ),
-                child: const AspectRatio(
-                  aspectRatio: 1 / 1,
-                  child: Image(
-                    image: AssetImage('images/logo_x.png'),
-                  ),
+                child: Column(
+                  children: [
+                    if (imgUrl == null)
+                      const AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: Image(
+                          image: AssetImage('images/logo_x.png'),
+                        ),
+                      )
+                    else
+                      AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: Image(
+                            image: NetworkImage(imgUrl!), fit: BoxFit.cover),
+                      ),
+                  ],
                 ),
               ),
               Padding(
@@ -59,6 +74,8 @@ class CardCollectionWidgetCell extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: AppColors.white,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
@@ -72,6 +89,8 @@ class CardCollectionWidgetCell extends StatelessWidget {
                       fontSize: 12.sp,
                       color: AppColors.white,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),

@@ -28,10 +28,10 @@ class SearchPage extends BaseView<MainController> {
               return Padding(
                 padding: EdgeInsets.only(top: 10.h),
                 child: CardCollectionWidgetCell(
-                  title: 'Commission On X',
-                  subTitle: 'subTitle',
-                  destinationUrl:
-                      'https://twitter.com/_moonblanc/status/1727245573156384976',
+                  title: controller.data[index].title,
+                  subTitle: controller.data[index].subTitle,
+                  imgUrl: controller.imgUrl[controller.data[index].id],
+                  destinationUrl: controller.data[index].destinationUrl,
                 ),
               );
             },
@@ -55,6 +55,7 @@ Widget gridView() {
         title: 'hello',
         subTitle: 'hello',
         destinationUrl: '',
+        imgUrl: '',
       );
     }),
   );
