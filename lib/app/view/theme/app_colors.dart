@@ -5,7 +5,10 @@ abstract class AppColors {
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
 
-  static const Color pageBackground = Color(0xFFFAFAFA);
+  static const Color pageBackground = Color(0xFFF3F3F3);
 
   static const Color primaryColor = Color(0xFF000000);
+
+  static const Color twitterCard = Color(0xFF3BA1FF);
+  static const Color dcCard = Color(0xFF3B468F);
 }
