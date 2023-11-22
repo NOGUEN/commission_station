@@ -3,6 +3,7 @@
 import 'package:commission_station/app/view/common/commission_station_app_bar.dart';
 import 'package:commission_station/app/view/common/commission_station_bottom_nav_bar.dart';
 import 'package:commission_station/app/view/main_page/home_page.dart';
+import 'package:commission_station/app/view/main_page/social_page.dart';
 import 'package:commission_station/app/view/theme/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:commission_station/app/core/base/base_view.dart';
@@ -15,20 +16,7 @@ class MainPage extends BaseView<MainController> {
 
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
-    switch (controller.selectedMenuCode) {
-      case MenuCode.HOME:
-        return const CommissionStationAppBar(
-            appBarText: AppString.str_commission_station);
-      case MenuCode.SEARCH:
-        return CommissionStationSearchAppBar(
-            appBarText: "소셜", controller: controller);
-      case MenuCode.MORE:
-        return CommissionStationSearchAppBar(
-            appBarText: "소셜", controller: controller);
-      case MenuCode.SOCIAL:
-        return CommissionStationSearchAppBar(
-            appBarText: "소셜", controller: controller);
-    }
+    return CommissionStationAppBar(mainController: controller);
   }
 
   @override
@@ -52,7 +40,7 @@ class MainPage extends BaseView<MainController> {
       case MenuCode.SEARCH:
         return Container();
       case MenuCode.SOCIAL:
-        return Container();
+        return SocialPage();
       case MenuCode.MORE:
         return Container();
       default:

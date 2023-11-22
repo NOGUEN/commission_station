@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:commission_station/app/bindings/article_page_binding.dart';
+import 'package:commission_station/app/view/article_page.dart';
 import 'package:get/get.dart';
 import 'package:commission_station/app/view/main_page/main_page.dart';
 import '../bindings/main_binding.dart';
@@ -12,6 +14,7 @@ class AppPages {
 
   static const INITIAL = Routes.MAIN;
   static const WEBVIEW = Routes.WEBVIEW;
+  static const ARTICLE = Routes.ARTICLE;
   static const TEST_PAGE = Routes.TEST_PAGE;
 
   static final pages = [
@@ -19,6 +22,12 @@ class AppPages {
       name: _Paths.MAIN,
       page: () => MainPage(),
       binding: MainBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: _Paths.ARTICLE,
+      page: () => AritclePage(),
+      binding: ArticlePageBinding(),
       transition: Transition.fadeIn,
     ),
   ];
