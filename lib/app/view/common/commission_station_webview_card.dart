@@ -1,4 +1,5 @@
 import 'package:commission_station/app/routes/app_pages.dart';
+import 'package:commission_station/app/view/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class CardCollectionWidgetCell extends StatelessWidget {
           height: 200.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            color: Colors.blue,
+            color: AppColors.twitterCard,
           ),
           child: Column(
             children: <Widget>[
@@ -47,26 +48,28 @@ class CardCollectionWidgetCell extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(8.r, 8.r, 8.r, 0),
+                padding: EdgeInsets.fromLTRB(8.r, 12.r, 8.r, 0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 12,
+                    style: TextStyle(
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(8.r, 4.r, 8.r, 0),
+                padding: EdgeInsets.fromLTRB(8.r, 8.r, 8.r, 0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Text(
                     subTitle,
-                    style: const TextStyle(
-                      fontSize: 10,
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: AppColors.white,
                     ),
                   ),
                 ),

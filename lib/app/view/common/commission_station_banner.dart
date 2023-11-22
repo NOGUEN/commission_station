@@ -2,42 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CSBanner extends StatelessWidget {
-  final double height;
+  final String title;
+  final String subTitle;
+  final String assetRoute;
+  final Color fontColor;
+
   const CSBanner({
-    required this.height,
+    required this.title,
+    required this.subTitle,
+    required this.assetRoute,
+    required this.fontColor,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    int _currentPage = 0;
-    final PageController _pageController = PageController();
-
-    return SizedBox(
-      height: height,
-      child: Stack(
-        children: [
-          PageView(
-            controller: _pageController,
-            onPageChanged: (int page) {
-              _currentPage = page;
-            },
-            children: [
-              buildBanner('Banner 1', 0, Colors.red[100]!),
-              buildBanner('Banner 2', 1, Colors.red[200]!),
-            ],
-          )
-        ],
-      ),
+    return Stack(
+      children: [
+        SizedBox(
+          width: 360.w,
+          child: Image.asset(
+            assetRoute,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 16.h, left: 16.w),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.bold,
+              color: fontColor,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 35.h, left: 16.w),
+          child: Text(
+            subTitle,
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.normal,
+              color: fontColor,
+            ),
+          ),
+        ),
+      ],
     );
   }
-}
-
-Widget buildBanner(String text, int index, Color bannerColor) {
-  return Container(
-    decoration: BoxDecoration(
-      color: bannerColor,
-    ),
-    child: Center(child: Text(text)),
-  );
 }
