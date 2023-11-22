@@ -5,6 +5,7 @@ import 'package:commission_station/app/view/theme/app_colors.dart';
 import 'package:commission_station/app/view/theme/app_string.dart';
 import 'package:commission_station/app/view/theme/app_values.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -25,36 +26,40 @@ class CommissionStationBottomNavigationBar extends StatelessWidget {
     List<BottomNavItem> navItems = _getNavItems();
 
     return Obx(
-      () => BottomNavigationBar(
-        key: bottomNavKey,
-        items: navItems
-            .map(
-              (BottomNavItem navItem) => BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  navItem.iconSVGName,
-                  height: AppValues.iconDefaultSize,
-                  width: AppValues.iconDefaultSize,
-                  colorFilter: navItems.indexOf(navItem) ==
-                          navController.selectedIndex
-                      ? ColorFilter.mode(selectedItemColor, BlendMode.srcIn)
-                      : ColorFilter.mode(unselectedItemColor, BlendMode.srcIn),
+      () => SizedBox(
+        height: 75.h,
+        child: BottomNavigationBar(
+          key: bottomNavKey,
+          items: navItems
+              .map(
+                (BottomNavItem navItem) => BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    navItem.iconSVGName,
+                    height: AppValues.iconDefaultSize,
+                    width: AppValues.iconDefaultSize,
+                    colorFilter: navItems.indexOf(navItem) ==
+                            navController.selectedIndex
+                        ? ColorFilter.mode(selectedItemColor, BlendMode.srcIn)
+                        : ColorFilter.mode(
+                            unselectedItemColor, BlendMode.srcIn),
+                  ),
+                  label: navItem.menuTitle,
+                  tooltip: "",
                 ),
-                label: navItem.menuTitle,
-                tooltip: "",
-              ),
-            )
-            .toList(),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColors.pageBackground,
-        selectedItemColor: selectedItemColor,
-        unselectedItemColor: unselectedItemColor,
-        currentIndex: navController.selectedIndex,
-        onTap: (index) {
-          navController.updateSelectedIndex(index);
-          onNewMenuSelected(navItems[index].menuCode);
-        },
+              )
+              .toList(),
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: AppColors.white,
+          selectedItemColor: selectedItemColor,
+          unselectedItemColor: unselectedItemColor,
+          currentIndex: navController.selectedIndex,
+          onTap: (index) {
+            navController.updateSelectedIndex(index);
+            onNewMenuSelected(navItems[index].menuCode);
+          },
+        ),
       ),
     );
   }

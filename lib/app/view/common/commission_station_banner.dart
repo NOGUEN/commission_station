@@ -13,7 +13,7 @@ class CSBanner extends StatelessWidget {
     int _currentPage = 0;
     final PageController _pageController = PageController();
 
-    return Container(
+    return SizedBox(
       height: height,
       child: Stack(
         children: [
