@@ -1,7 +1,9 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:commission_station/app/bindings/article_page_binding.dart';
+import 'package:commission_station/app/bindings/web_page_binding.dart';
 import 'package:commission_station/app/view/article_page.dart';
+import 'package:commission_station/app/view/web_view_page.dart';
 import 'package:get/get.dart';
 import 'package:commission_station/app/view/main_page/main_page.dart';
 import '../bindings/main_binding.dart';
@@ -29,6 +31,11 @@ class AppPages {
       page: () => AritclePage(),
       binding: ArticlePageBinding(),
       transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: Routes.WEBVIEW,
+      page: () => const WebViewPage(),
+      binding: WebViewBinding(),
     ),
   ];
 }

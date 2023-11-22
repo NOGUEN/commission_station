@@ -2,7 +2,6 @@ import 'package:commission_station/app/core/base/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../data/model/websites/keyword_search.dart';
 
 class WebPageViewController extends BaseController {
   late WebViewController controller;
@@ -13,11 +12,6 @@ class WebPageViewController extends BaseController {
         NavigationDelegate(
           onProgress: (int progress) {},
           onPageStarted: (String url) {},
-          onPageFinished: (_) {
-            Future.delayed(Duration(milliseconds: 5000), () {
-              loadHtmlContent();
-            });
-          },
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.startsWith('https://www.youtube.com/')) {
@@ -27,13 +21,7 @@ class WebPageViewController extends BaseController {
           },
         ),
       )
-      ..loadRequest(Uri.parse(Get.arguments));
-  }
-
-  void loadHtmlContent() async {
-    String script = "document.documentElement.innerHTML";
-    final result = await controller.runJavaScriptReturningResult(script);
-    String html = result.toString();
-    print(countKeywords(html, ['웨어하우스']));
+      ..loadRequest(Uri.parse(
+          'https://twitter.com/_moonblanc/status/1727245573156384976'));
   }
 }

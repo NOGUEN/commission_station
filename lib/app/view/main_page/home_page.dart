@@ -65,7 +65,8 @@ class HomePage extends BaseView<MainController> {
               return CardCollectionWidgetCell(
                 title: 'Commission On X',
                 subTitle: 'subTitle',
-                destinationUrl: 'destinationUrl',
+                destinationUrl:
+                    'https://twitter.com/_moonblanc/status/1727245573156384976',
               );
             },
             childCount: 10,

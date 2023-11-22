@@ -25,11 +25,14 @@ class SearchPage extends BaseView<MainController> {
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              return CardCollectionWidgetCell(
-                title: 'Commission On X',
-                subTitle: 'subTitle',
-                destinationUrl:
-                    'https://twitter.com/_moonblanc/status/1727245573156384976',
+              return Padding(
+                padding: EdgeInsets.only(top: 10.h),
+                child: CardCollectionWidgetCell(
+                  title: 'Commission On X',
+                  subTitle: 'subTitle',
+                  destinationUrl:
+                      'https://twitter.com/_moonblanc/status/1727245573156384976',
+                ),
               );
             },
             childCount: 10,

@@ -18,7 +18,7 @@ class CommissionStationAppBar extends StatelessWidget
 
   String appBarText = "";
   final MainController mainController;
-  double appBarHeight = 48.h;
+  RxDouble appBarHeight = 100.h.obs;
   Widget optionalWidget = SizedBox();
 
   @override
@@ -26,31 +26,33 @@ class CommissionStationAppBar extends StatelessWidget
     return Obx(
       () {
         if (mainController.selectedMenuCode == MenuCode.HOME) {
-          appBarHeight = 48.h + MediaQuery.of(context).padding.top;
+          appBarHeight.value = 48.h + MediaQuery.of(context).padding.top;
           appBarText = "Commission Station";
           optionalWidget = const SizedBox();
         } else if (mainController.selectedMenuCode == MenuCode.SOCIAL) {
-          appBarHeight = 48.h + MediaQuery.of(context).padding.top;
+          appBarHeight.value = 48.h + MediaQuery.of(context).padding.top;
           appBarText = "소셜";
           optionalWidget = const SizedBox();
         } else if (mainController.selectedMenuCode == MenuCode.SEARCH) {
-          appBarHeight = 110.h + MediaQuery.of(context).padding.top;
+          appBarHeight = (100.h + MediaQuery.of(context).padding.top).obs;
           appBarText = "검색";
           optionalWidget = Padding(
             padding: EdgeInsets.all(10.w),
             child: CommissionStationTextField(
               controller: TextEditingController(),
-              titleText: 'title',
-              hintText: 'hint',
+              titleText: '',
+              hintText: '키워드를 입력해주세요',
             ),
           );
         } else if (mainController.selectedMenuCode == MenuCode.MORE) {
-          appBarHeight = 48.h + MediaQuery.of(context).padding.top;
+          appBarHeight.value = 48.h + MediaQuery.of(context).padding.top;
           appBarText = "더보기";
           optionalWidget = SizedBox();
         }
+
+        if (appBarHeight.value == 0) {}
         return Container(
-          height: appBarHeight,
+          height: appBarHeight.value,
           decoration: const BoxDecoration(color: AppColors.white),
           child: SafeArea(
             child: Padding(
@@ -73,7 +75,7 @@ class CommissionStationAppBar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(appBarHeight);
+  Size get preferredSize => Size.fromHeight(appBarHeight.value);
 }
 
 class CommissionStationSearchAppBar extends StatelessWidget

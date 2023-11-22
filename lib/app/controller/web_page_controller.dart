@@ -5,7 +5,6 @@ import '../data/model/websites/keyword_search.dart';
 
 class WebPageViewController extends GetxController {
   late WebViewController controller;
-
   WebPageViewController() {
     controller = WebViewController()
       ..setBackgroundColor(const Color(0x00000000))
@@ -34,5 +33,6 @@ class WebPageViewController extends GetxController {
     String script = "document.documentElement.innerHTML";
     final result = await controller.runJavaScriptReturningResult(script);
     String html = result.toString();
+    print(countKeywords(html, ['웨어하우스']));
   }
 }

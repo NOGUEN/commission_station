@@ -1,22 +1,25 @@
 import 'package:commission_station/app/controller/commission_station_web_page_view_controller.dart';
-import 'package:commission_station/app/core/base/base_view.dart';
+import 'package:commission_station/app/view/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebViewPage extends BaseView<WebPageViewController> {
-  @override
-  PreferredSizeWidget? appBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: const Color.fromARGB(255, 255, 105, 105),
-    );
-  }
+import '../../controller/web_page_view_controller.dart';
+
+class WebViewPage extends GetView<WebPageViewController> {
+  const WebViewPage({super.key});
 
   @override
-  Widget body(BuildContext context) {
-    return SafeArea(
-      child: WebViewWidget(
-        controller: controller.controller,
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.twitterCard,
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: WebViewWidget(
+          controller: controller.controller,
+        ),
       ),
     );
   }
