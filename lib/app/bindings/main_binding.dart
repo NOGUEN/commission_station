@@ -9,17 +9,8 @@ class MainBinding implements Bindings {
     Get.lazyPut<MainController>(() {
       return MainController();
     });
-    HomePageBinding().dependencies();
-    SocialPageBinding().dependencies();
-  }
-}
 
-class HomePageBinding implements Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut<HomePageController>(() {
-      return HomePageController();
-    });
+    SocialPageBinding().dependencies();
   }
 }
 

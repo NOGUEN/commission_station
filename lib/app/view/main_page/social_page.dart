@@ -1,3 +1,4 @@
+import 'package:commission_station/app/controller/main/main_controller.dart';
 import 'package:commission_station/app/controller/main/social_page_controller.dart';
 import 'package:commission_station/app/core/base/base_view.dart';
 import 'package:commission_station/app/view/common/article_list_cell.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/preferred_size.dart';
 
-class SocialPage extends BaseView<SocialPageController> {
+class SocialPage extends BaseView<MainController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return null;

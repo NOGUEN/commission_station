@@ -1,8 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable
 
+import 'package:commission_station/app/controller/main/home_page_controller.dart';
 import 'package:commission_station/app/view/common/commission_station_app_bar.dart';
 import 'package:commission_station/app/view/common/commission_station_bottom_nav_bar.dart';
 import 'package:commission_station/app/view/main_page/home_page.dart';
+import 'package:commission_station/app/view/main_page/search_page.dart';
 import 'package:commission_station/app/view/main_page/social_page.dart';
 import 'package:commission_station/app/view/theme/app_string.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +40,7 @@ class MainPage extends BaseView<MainController> {
       case MenuCode.HOME:
         return HomePage();
       case MenuCode.SEARCH:
-        return Container();
+        return SearchPage();
       case MenuCode.SOCIAL:
         return SocialPage();
       case MenuCode.MORE:

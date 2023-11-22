@@ -19,6 +19,7 @@ class CommissionStationAppBar extends StatelessWidget
   String appBarText = "";
   final MainController mainController;
   double appBarHeight = 48.h;
+  Widget optionalWidget = SizedBox();
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +27,27 @@ class CommissionStationAppBar extends StatelessWidget
       () {
         if (mainController.selectedMenuCode == MenuCode.HOME) {
           appBarHeight = 48.h + MediaQuery.of(context).padding.top;
-
           appBarText = "Commission Station";
+          optionalWidget = const SizedBox();
         } else if (mainController.selectedMenuCode == MenuCode.SOCIAL) {
           appBarHeight = 48.h + MediaQuery.of(context).padding.top;
           appBarText = "소셜";
+          optionalWidget = const SizedBox();
         } else if (mainController.selectedMenuCode == MenuCode.SEARCH) {
           appBarHeight = 110.h + MediaQuery.of(context).padding.top;
           appBarText = "검색";
+          optionalWidget = Padding(
+            padding: EdgeInsets.all(10.w),
+            child: CommissionStationTextField(
+              controller: TextEditingController(),
+              titleText: 'title',
+              hintText: 'hint',
+            ),
+          );
         } else if (mainController.selectedMenuCode == MenuCode.MORE) {
           appBarHeight = 48.h + MediaQuery.of(context).padding.top;
           appBarText = "더보기";
+          optionalWidget = SizedBox();
         }
         return Container(
           height: appBarHeight,
@@ -44,9 +55,15 @@ class CommissionStationAppBar extends StatelessWidget
           child: SafeArea(
             child: Padding(
               padding: EdgeInsets.fromLTRB(10.w, 10.h, 20.w, 0),
-              child: CommissionStationTextBold2Xl(
-                text: appBarText,
-                textColor: Colors.black,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommissionStationTextBold2Xl(
+                    text: appBarText,
+                    textColor: Colors.black,
+                  ),
+                  optionalWidget,
+                ],
               ),
             ),
           ),
