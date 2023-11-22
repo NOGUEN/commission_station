@@ -1,5 +1,7 @@
 import 'package:commission_station/app/routes/app_pages.dart';
+import 'package:commission_station/app/view/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CardCollectionWidgetCell extends StatelessWidget {
@@ -20,38 +22,54 @@ class CardCollectionWidgetCell extends StatelessWidget {
         Get.toNamed(Routes.WEBVIEW, arguments: destinationUrl);
       },
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Card(
-          clipBehavior: Clip.antiAlias,
+        padding: EdgeInsets.only(right: 8.w, left: 8.w),
+        child: Container(
+          width: 150.w,
+          height: 200.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.r),
+            color: AppColors.twitterCard,
+          ),
           child: Column(
             children: <Widget>[
-              const AspectRatio(
-                aspectRatio: 18 / 11,
-                child: Image(
-                  image: AssetImage('images/default_thumbnail.png'),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(8.r),
+                    topRight: Radius.circular(8.r),
+                  ),
+                  color: Colors.white,
+                ),
+                child: const AspectRatio(
+                  aspectRatio: 1 / 1,
+                  child: Image(
+                    image: AssetImage('images/logo_x.png'),
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                padding: EdgeInsets.fromLTRB(8.r, 12.r, 8.r, 0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 12,
+                    style: TextStyle(
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
+                padding: EdgeInsets.fromLTRB(8.r, 8.r, 8.r, 0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Text(
                     subTitle,
-                    style: const TextStyle(
-                      fontSize: 10,
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
